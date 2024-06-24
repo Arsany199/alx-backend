@@ -51,5 +51,5 @@ class Server:
          for i in keys if i >= index and len(focuse) <= page_size]
         data = [dataset[v] for v in focuse[:-1]]
         next_idx = focuse[-1] if len(focuse) - page_size == 1 else None
-        return {'index': index, 'data': data,
-                'page_size': len(data), 'next_index': next_idx}
+        return ({'index': index, 'data': data,
+                'page_size': len(data), 'next_index': next_idx})
