@@ -9,7 +9,7 @@ class LRUCache(BaseCaching):
     """defines LRU class inherits from basecaching"""
     def __init__(self):
         """initialize LRU class from its parent"""
-        super.__init__()
+        super().__init__()
         self.usedKeys = []
 
     def put(self, key, item):
