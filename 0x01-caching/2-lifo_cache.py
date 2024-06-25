@@ -13,9 +13,7 @@ class LIFOCache(BaseCaching):
 
     def put(self, key, item):
         """put something in the cache"""
-        if key is None or item is None:
-            pass
-        else:
+        if key is not None or item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS \
                     and key not in self.cache_data.keys():
                 dis_key = list(self.cache_data.keys())[-1]
