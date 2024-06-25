@@ -14,9 +14,7 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """function to put keys in cache"""
-        if key is None and item is None:
-            pass
-        else:
+        if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.usedKeys:
                 self.usedKeys.append(key)
