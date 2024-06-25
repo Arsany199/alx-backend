@@ -15,12 +15,10 @@ class LFUCache(BaseCaching):
 
     def put(self, key, item):
         """function that adds a key and ites item"""
-        if key is None and item is None:
-            pass
-        else:
+        if key is not None and item is not None:
             if (len(self.keys) == BaseCaching.MAX_ITEMS
                     and key not in self.keys):
-                dis_key = self.keys.pop(self.keys.index(self.findLRU()))
+                dis_key = self.keys.pop(self.keys.index(self.findLFU()))
                 del self.cache_data[dis_key]
                 del self.uses[dis_key]
                 print(f"DISCARD: {dis_key:s}")
@@ -40,8 +38,8 @@ class LFUCache(BaseCaching):
             return (self.cache_data[key])
         return (None)
 
-    def findLRU(self):
-        """function to find LRU"""
+    def findLFU(self):
+        """function to find LFU"""
         items = list(self.uses.items())
         freqz = [item[1] for item in items]
         least = min(freqz)
